@@ -1,5 +1,2 @@
-# firstgit-demo
-This is my first Git Repository
-<br>
-Author - Raj Aryan{King}
+Hi I'm Raj Aryan and I'm a Backend Developer
 
