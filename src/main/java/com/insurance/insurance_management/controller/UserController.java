@@ -3,6 +3,7 @@ package com.insurance.insurance_management.controller;
 import com.insurance.insurance_management.entity.User;
 import com.insurance.insurance_management.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,8 +18,12 @@ public class UserController {
     public UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody User user){
+    public ResponseEntity<?> registerUser(@RequestBody User user) {
+        try {
             userService.registerUser(user);
             return ResponseEntity.ok("User Registration Successful");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("User already exists");
+        }
     }
 }
